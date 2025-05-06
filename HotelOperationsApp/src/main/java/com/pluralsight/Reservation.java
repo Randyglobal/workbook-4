@@ -5,10 +5,10 @@ public class Reservation {
         KING, DOUBLE
     }
     private RoomType roomType;
-    private double price;
-    private int numberOfNights;
-    private boolean isWeekend;
-    private double reservationTotal;
+    private double price = 0.0;
+    private int numberOfNights = 0;
+    private boolean isWeekend = false;
+    private double reservationTotal = 0.0;
 
     public Reservation(RoomType roomType, double price, int numberOfNights, boolean isWeekend, double reservationTotal) {
         this.roomType = roomType;

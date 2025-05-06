@@ -1,18 +1,22 @@
 package com.pluralsight;
 
 public class Employee {
-    private String employeeId;
-    private String name;
-    private String department;
-    private double payRate;
-    private double hoursWorked;
+    private String employeeId = "";
+    private String name = "";
+    private String department = "";
+    private double payRate = 0;
+    private double hoursWorked = 0;
+    private double punchInTime = 0.0;
+    private double punchOutTime = 0.0;
 
-    public Employee(String employeeId, String name, String department, double payRate, double hoursWorked) {
+    public Employee(String employeeId, String name, String department, double payRate, double hoursWorked, double punchInTime, double punchOutTime) {
       this.employeeId = employeeId;
       this.name = name;
       this.department = department;
       this.payRate = payRate;
       this.hoursWorked = hoursWorked;
+      this.punchInTime = punchInTime;
+      this.punchOutTime = punchOutTime;
     }
 
     public String getEmployeeId() {
@@ -57,10 +61,46 @@ public class Employee {
     public double getTotalPay(){
         return hoursWorked * payRate;
     }
-//    public double getRegularHours(){
-//
-//    }
-//    public  double getOverTimeHours(){
-//        return
-//    }
+
+    public double getPunchInTime() {
+        return punchInTime;
+    }
+
+    public void setPunchInTime(double punchInTime) {
+        this.punchInTime = punchInTime;
+    }
+
+    public double getPunchOutTime() {
+        return punchOutTime;
+    }
+
+    public void setPunchOutTime(double punchOutTime) {
+        this.punchOutTime = punchOutTime;
+    }
+
+    public double getRegularHours(){
+        double regularHours = 0;
+        if (hoursWorked > 40){
+            regularHours = 40;
+        }
+        return  regularHours;
+    }
+    public  double getOverTimeHours(){
+        double overtimeHours = 0;
+        if (hoursWorked > 40){
+            overtimeHours = hoursWorked - getRegularHours();
+        }
+        return overtimeHours;
+    }
+    public void punchIn(double time){
+        punchInTime = time;
+    }
+    public void punchOut(double time){
+        double totalHoursWorked = time - punchInTime;
+        if (totalHoursWorked > 0){
+            hoursWorked += totalHoursWorked;
+        }else{
+            System.out.println("Invalid Code");
+        }
+    }
 }
