@@ -10,9 +10,8 @@ public class Reservation1 {
     private boolean isWeekend = false;
     private double reservationTotal = 0.0;
 
-    public Reservation1(RoomType roomType, double price, int numberOfNights, boolean isWeekend) {
+    public Reservation1(RoomType roomType, int numberOfNights, boolean isWeekend) {
         this.roomType = roomType;
-        this.price = price;
         this.numberOfNights = numberOfNights;
         this.isWeekend = isWeekend;
     }
@@ -48,9 +47,18 @@ public class Reservation1 {
     public void setWeekend(boolean weekend) {
         isWeekend = weekend;
     }
-
+    public double totalPay(){
+        switch (roomType){
+            case KING -> price = 139.00 * numberOfNights;
+            case DOUBLE -> price = 1245.00 * numberOfNights;
+        }
+        if (isWeekend){
+           price *= 1.10;
+        }
+        return price;
+    }
     public double getReservationTotal() {
-        return reservationTotal;
+        return totalPay();
     }
 
 

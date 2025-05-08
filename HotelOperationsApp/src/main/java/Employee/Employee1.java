@@ -7,6 +7,8 @@ public class Employee1 {
     private double payRate = 0;
     private double hoursWorked = 0;
     private double regularHour = 40;
+    private Double punchInTime = null;
+    private Double punchOutTime = null;
 
     public Employee1( String employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
@@ -66,5 +68,30 @@ public class Employee1 {
     }
     public double getOvertimeHours(){
         return hoursWorked - regularHour;
+    }
+    public double punchIn(double time){
+        if (punchInTime != null){
+            punchInTime = time;
+            System.out.println("PunchIn Successful");
+        }
+        return time;
+    }
+    public double punchOut(double time){
+        if (punchOutTime != null){
+            punchOutTime = time;
+            System.out.println("You have Successfully Punched out");
+        }
+        return time;
+    }
+    public void punchTimeCard(){
+        if (punchInTime != null && punchOutTime != null) {
+            double timeWorked = punchOutTime - punchInTime;
+            if (timeWorked > 0) {
+                hoursWorked += timeWorked;
+                System.out.println("Punch time difference");
+            } else {
+                System.out.println("Invalid Punch");
+            }
+        }
     }
 }
