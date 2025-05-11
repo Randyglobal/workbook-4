@@ -10,6 +10,10 @@ public class Reservation1 {
     private boolean isWeekend = false;
     private double reservationTotal = 0.0;
 
+//    Optional
+//    public Reservation1() {
+//    }
+
     public Reservation1(RoomType roomType, int numberOfNights, boolean isWeekend) {
         this.roomType = roomType;
         this.numberOfNights = numberOfNights;

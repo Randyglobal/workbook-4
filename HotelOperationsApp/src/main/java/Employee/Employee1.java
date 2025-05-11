@@ -1,5 +1,8 @@
 package Employee;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Employee1 {
     private String employeeId = "";
     private String name = "";
@@ -69,6 +72,7 @@ public class Employee1 {
     public double getOvertimeHours(){
         return hoursWorked - regularHour;
     }
+
     public double punchIn(double time){
         if (punchInTime != null){
             punchInTime = time;
@@ -76,12 +80,22 @@ public class Employee1 {
         }
         return time;
     }
+    public LocalDateTime punchIn(){
+        LocalDateTime punchTime = LocalDateTime.now();
+        System.out.println(punchTime);
+        return punchTime;
+    }
     public double punchOut(double time){
         if (punchOutTime != null){
             punchOutTime = time;
             System.out.println("You have Successfully Punched out");
         }
         return time;
+    }
+    public LocalDateTime punchOut(){
+        LocalDateTime punchTime = LocalDateTime.now();
+        System.out.println(punchTime);
+        return punchTime;
     }
     public void punchTimeCard(){
         if (punchInTime != null && punchOutTime != null) {
