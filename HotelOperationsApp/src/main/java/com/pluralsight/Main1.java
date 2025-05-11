@@ -1,8 +1,12 @@
 package com.pluralsight;
 
 import Employee.Employee1;
+import Hotel.Hotel;
 import Reservation.Reservation1;
 import Room.Room1;
+
+import java.sql.ResultSet;
+import java.util.Scanner;
 
 public class Main1 {
     public static void main(String[] args) {
@@ -27,5 +31,38 @@ public class Main1 {
 //        System.out.println("Checkin: " + room.checkin(true));
 //        System.out.println("Checkout: " + room.checkout(true));
 //        System.out.println("Clean Room: " + room.cleanroom(true));
+        hotelBooking();
+    }
+    public static void display(String message){
+        System.out.println(message);
+    }
+    public static void hotelBooking(){
+        String name;
+        int numberOfSuites = 2;
+        int numberOfRooms = 3;
+        boolean isSuite = false;
+       Scanner scanner = new Scanner(System.in);
+       display("Enter your name: ");
+       name = scanner.nextLine();
+       display("How many rooms will you need? ");
+       int numberOfInputRooms = scanner.nextInt();
+       if (numberOfInputRooms > numberOfRooms){
+           display("Number of rooms not available");
+           return;
+       }
+       scanner.nextLine();
+       display("Enter Room type (Suite/Basic): ");
+       String roomType = scanner.nextLine();
+        Hotel hotel = new Hotel(name,numberOfSuites, numberOfRooms);
+       if (roomType.equalsIgnoreCase("suite")){
+           isSuite = true;
+           display("" + hotel.bookedRoom(numberOfInputRooms, isSuite));
+       } else if (roomType.equalsIgnoreCase("basic")) {
+           isSuite = false;
+           display("" + hotel.bookedRoom(numberOfInputRooms, isSuite));
+       }else{
+           display("Invalid Room type");
+       }
+     scanner.close();
     }
 }
