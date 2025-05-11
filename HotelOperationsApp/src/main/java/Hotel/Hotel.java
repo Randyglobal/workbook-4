@@ -53,7 +53,7 @@ public class Hotel {
         return numberOfRooms - numberOfBookedRooms;
     }
 
-    public boolean bookedRoom(int numberOfRooms, boolean isSuite){
+    public static boolean bookedRoom(int numberOfRooms, boolean isSuite){
         if (numberOfRooms > 0 && isSuite){
             boolean result = true;
             return result;
