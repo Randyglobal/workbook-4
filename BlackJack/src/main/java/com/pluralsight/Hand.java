@@ -32,4 +32,9 @@ public class Hand {
         }
         return value;
     }
+    public void showHand(){
+        for (Card card: cards){
+            card.flip();
+        }
+    }
 }
